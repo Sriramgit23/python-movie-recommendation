@@ -1,0 +1,27 @@
+# Define a dictionary to store the movie ratings
+movie_ratings = {}
+
+# Define a list to store the movie names
+movies = []
+
+# Get input from 10 members for movie names and ratings
+for i in range(10):
+    name = input("Enter the name of the movie (member {}: ".format(i+1))
+    rating = int(input("Enter the rating (1-5): "))
+    if name not in movie_ratings:
+        movie_ratings[name] = [rating]
+    else:
+        movie_ratings[name].append(rating)
+
+# Calculate the average rating for each movie
+for movie, ratings in movie_ratings.items():
+    average_rating = sum(ratings) / len(ratings)
+    print("Movie: {}, Average Rating: {:.2f}".format(movie, average_rating))
+
+# Sort the movies by average rating in descending order
+sorted_movies = sorted(movie_ratings.items(), key=lambda x: x[1], reverse=True)
+
+# Print the top 5 movies with their average ratings
+print("\nTop 5 Movies with Average Ratings:")
+for movie, ratings in sorted_movies[:5]:
+    print("Movie: {}, Average Rating: {:.2f}".format(movie, sum(ratings) / len(ratings)))
